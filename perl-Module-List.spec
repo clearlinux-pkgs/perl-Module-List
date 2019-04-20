@@ -4,7 +4,7 @@
 #
 Name     : perl-Module-List
 Version  : 0.004
-Release  : 11
+Release  : 12
 URL      : https://cpan.metacpan.org/authors/id/Z/ZE/ZEFRAM/Module-List-0.004.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/Z/ZE/ZEFRAM/Module-List-0.004.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libm/libmodule-find-perl/libmodule-find-perl_0.13-1.debian.tar.xz
@@ -27,6 +27,7 @@ a view of the abstract namespace.
 Summary: dev components for the perl-Module-List package.
 Group: Development
 Provides: perl-Module-List-devel = %{version}-%{release}
+Requires: perl-Module-List = %{version}-%{release}
 
 %description dev
 dev components for the perl-Module-List package.
@@ -45,7 +46,7 @@ license components for the perl-Module-List package.
 cd ..
 %setup -q -T -D -n Module-List-0.004 -b 1
 mkdir -p deblicense/
-mv %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/Module-List-0.004/deblicense/
+cp -r %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/Module-List-0.004/deblicense/
 
 %build
 export http_proxy=http://127.0.0.1:9/
@@ -76,7 +77,7 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.1/Module/List.pm
+/usr/lib/perl5/vendor_perl/5.28.2/Module/List.pm
 
 %files dev
 %defattr(-,root,root,-)
