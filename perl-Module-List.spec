@@ -4,7 +4,7 @@
 #
 Name     : perl-Module-List
 Version  : 0.004
-Release  : 14
+Release  : 15
 URL      : https://cpan.metacpan.org/authors/id/Z/ZE/ZEFRAM/Module-List-0.004.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/Z/ZE/ZEFRAM/Module-List-0.004.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libm/libmodule-find-perl/libmodule-find-perl_0.13-1.debian.tar.xz
@@ -12,6 +12,7 @@ Summary  : "module `directory' listing"
 Group    : Development/Tools
 License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0
 Requires: perl-Module-List-license = %{version}-%{release}
+Requires: perl-Module-List-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 
 %description
@@ -41,18 +42,28 @@ Group: Default
 license components for the perl-Module-List package.
 
 
+%package perl
+Summary: perl components for the perl-Module-List package.
+Group: Default
+Requires: perl-Module-List = %{version}-%{release}
+
+%description perl
+perl components for the perl-Module-List package.
+
+
 %prep
 %setup -q -n Module-List-0.004
-cd ..
-%setup -q -T -D -n Module-List-0.004 -b 1
+cd %{_builddir}
+tar xf %{_sourcedir}/libmodule-find-perl_0.13-1.debian.tar.xz
+cd %{_builddir}/Module-List-0.004
 mkdir -p deblicense/
-cp -r %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/Module-List-0.004/deblicense/
+cp -r %{_builddir}/debian/* %{_builddir}/Module-List-0.004/deblicense/
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
+export LANG=C.UTF-8
 if test -f Makefile.PL; then
 %{__perl} Makefile.PL
 make  %{?_smp_mflags}
@@ -64,7 +75,7 @@ fi
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-Module-List
-cp deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-Module-List/deblicense_copyright
+cp %{_builddir}/Module-List-0.004/deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-Module-List/4ee2088ae1960a0c01daaec40141bafcb4a3408a
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -77,7 +88,6 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/Module/List.pm
 
 %files dev
 %defattr(-,root,root,-)
@@ -85,4 +95,8 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/perl-Module-List/deblicense_copyright
+/usr/share/package-licenses/perl-Module-List/4ee2088ae1960a0c01daaec40141bafcb4a3408a
+
+%files perl
+%defattr(-,root,root,-)
+/usr/lib/perl5/vendor_perl/5.30.1/Module/List.pm
