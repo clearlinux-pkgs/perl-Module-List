@@ -4,7 +4,7 @@
 #
 Name     : perl-Module-List
 Version  : 0.004
-Release  : 15
+Release  : 16
 URL      : https://cpan.metacpan.org/authors/id/Z/ZE/ZEFRAM/Module-List-0.004.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/Z/ZE/ZEFRAM/Module-List-0.004.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libm/libmodule-find-perl/libmodule-find-perl_0.13-1.debian.tar.xz
@@ -75,7 +75,7 @@ fi
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-Module-List
-cp %{_builddir}/Module-List-0.004/deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-Module-List/4ee2088ae1960a0c01daaec40141bafcb4a3408a
+cp %{_builddir}/debian/copyright %{buildroot}/usr/share/package-licenses/perl-Module-List/4ee2088ae1960a0c01daaec40141bafcb4a3408a
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -99,4 +99,4 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.1/Module/List.pm
+/usr/lib/perl5/vendor_perl/5.30.2/Module/List.pm
