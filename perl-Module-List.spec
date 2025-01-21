@@ -4,7 +4,7 @@
 #
 Name     : perl-Module-List
 Version  : 0.004
-Release  : 27
+Release  : 28
 URL      : https://cpan.metacpan.org/authors/id/Z/ZE/ZEFRAM/Module-List-0.004.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/Z/ZE/ZEFRAM/Module-List-0.004.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libm/libmodule-find-perl/libmodule-find-perl_0.13-1.debian.tar.xz
