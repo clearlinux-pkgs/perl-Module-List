@@ -7,7 +7,7 @@
 #
 Name     : perl-Module-List
 Version  : 0.005
-Release  : 30
+Release  : 31
 URL      : https://cpan.metacpan.org/authors/id/N/NE/NEILB/Module-List-0.005.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/N/NE/NEILB/Module-List-0.005.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libm/libmodule-find-perl/libmodule-find-perl_0.13-1.debian.tar.xz
